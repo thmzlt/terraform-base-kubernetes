@@ -1,0 +1,5 @@
+/*.auto.tfvars
+/.terraform
+/.vim
+/credentials.json
+/terraform.tfstate*

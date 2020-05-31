@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Issuer
+metadata:
+  name: letsencrypt-prod
+  namespace: ${namespace}
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: ${email}
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    # ACME DNS-01 provider configurations
+    solvers:
+      - selector: {}
+        dns01:
+          clouddns:
+            project: ${project_id}
+            serviceAccountSecretRef:
+              name: ${external_dns_service_account_secret}
+              key: ${external_dns_service_account_secret_key}
