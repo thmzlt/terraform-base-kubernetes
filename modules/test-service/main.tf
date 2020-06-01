@@ -5,6 +5,7 @@ resource "kubernetes_ingress" "test_service" {
 
     annotations = {
       "cert-manager.io/issuer" = "letsencrypt-prod"
+      "kubernetes.io/ingress.class" = "nginx"
     }
   }
 
